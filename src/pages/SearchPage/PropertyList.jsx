@@ -15,27 +15,25 @@ export function PropertyList(prop) {
       sx={{
         display: "flex",
         flexDirection: "column",
-        pl: { xs: 2, md: 10 },
-        pr: { xs: 2, md: 0 },
       }}
     >
       <Box
         sx={{
           display: "inline-flex",
-          py: 3,
-          mb: 3,
+          pt: "32px",
+          pb: "24px",
+          mb: "24px",
           alignItems: "center",
-          borderBottom: "1px solid #efefef",
+          borderBottom: "1px solid #DDDDDD",
         }}
       >
-        <Typography sx={{ flexGrow: 1 }}>
+        <Typography variant="subtitle1" color="#000" sx={{ flexGrow: 1 }}>
           {properties.length} resultados
         </Typography>
-        <Typography sx={{ mr: 2 }}>Mostrar en orden de:</Typography>
-        <FormControl sx={{ mr: 2 }}>
-          <InputLabel>Bedrooms</InputLabel>
-          <Select label="Price" value="bedrooms">
-            <MenuItem value="bedrooms" selected>
+        <Typography sx={{ mr: "12px" }}>Mostrar en orden de</Typography>
+        <FormControl sx={{ mr: "19px" }}>
+          <Select value="default" sx={{ height: "48px" }}>
+            <MenuItem value="default" selected>
               Mayor a menor precio
             </MenuItem>
           </Select>

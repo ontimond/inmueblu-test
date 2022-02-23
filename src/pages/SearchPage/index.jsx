@@ -41,33 +41,54 @@ export default function SearchPage() {
               </TabList>
             </Box>
           </Box>
-          <TabPanel
-            value="1"
-            sx={{
-              padding: 0,
-              height: { xs: 0, md: 1 },
-              display: "inline-flex",
-            }}
-          >
-            <Box sx={{ width: 1, borderRight: `1px solid ${grey[300]}` }}>
-              <PropertyList properties={properties}></PropertyList>
-            </Box>
-            <Box sx={{ width: 1, display: { xs: "none", md: "block" } }}>
-              <Map></Map>
-            </Box>
-          </TabPanel>
-          <TabPanel
-            value="2"
-            sx={{
-              padding: 0,
-              height: { xs: 1, md: 0 },
-              display: "inline-flex",
-            }}
-          >
-            <Box sx={{ width: 1, display: { xs: "block", md: "none" } }}>
-              <Map></Map>
-            </Box>
-          </TabPanel>
+          {value === "1" && (
+            <TabPanel
+              value="1"
+              sx={{
+                padding: 0,
+                height: 1,
+                display: "inline-flex",
+                flexGrow: 1,
+              }}
+            >
+              <Grid container>
+                <Grid item xs={12} md={7}>
+                  <Box
+                    sx={{
+                      pl: { xs: "17px", md: "100px" },
+                      pr: { xs: "17px", md: "0px" },
+                      height: "100%",
+                      maxHeight: "100%",
+                      overflow: "auto",
+                      borderRight: {
+                        md: "1px solid #B8BAC6",
+                        xs: "none",
+                      },
+                    }}
+                  >
+                    <PropertyList properties={properties} />
+                  </Box>
+                </Grid>
+                <Grid item xs={0} md={5} display={{ xs: "none", md: "block" }}>
+                  <Map properties={properties} />
+                </Grid>
+              </Grid>
+            </TabPanel>
+          )}
+          {value === "2" && (
+            <TabPanel
+              value="2"
+              sx={{
+                padding: 0,
+                height: { xs: 1, md: 0 },
+                display: "inline-flex",
+              }}
+            >
+              <Box sx={{ width: 1 }}>
+                <Map></Map>
+              </Box>
+            </TabPanel>
+          )}
         </TabContext>
       </Box>
     </MainLayout>

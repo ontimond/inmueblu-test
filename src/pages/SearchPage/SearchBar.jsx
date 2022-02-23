@@ -10,9 +10,12 @@ import {
   Popover,
   Typography,
   Box,
+  InputAdornment,
 } from "@mui/material";
 import { useState } from "react";
 import { FilterForm } from "./FilterForm";
+import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
+import CloseOutlinedIcon from "@mui/icons-material/CloseOutlined";
 
 export function SearchBar() {
   const [anchorEl, setAnchorEl] = useState(null);
@@ -28,67 +31,92 @@ export function SearchBar() {
   const id = open ? "simple-popover" : undefined;
 
   return (
-    <Box sx={{ backgroundColor: "#F7F8FA" }}>
-      <Container sx={{ p: 3 }}>
-        <Grid container spacing={2}>
-          <Grid item xs>
-            <TextField
-              label="Buscar propiedades"
-              variant="outlined"
-              fullWidth
-              sx={{ background: "white" }}
-            />
-          </Grid>
-          <Grid item xs="auto" sx={{ display: { xs: "none", md: "block" } }}>
-            <FormControl sx={{ mr: 2 }}>
-              <InputLabel>Type</InputLabel>
-              <Select label="Type" value="apartment">
-                <MenuItem value="apartment" selected>
-                  Apartment
-                </MenuItem>
-              </Select>
-            </FormControl>
-            <FormControl sx={{ mr: 2 }}>
-              <InputLabel>Price</InputLabel>
-              <Select label="Price" value="range">
-                <MenuItem value="range" selected>
-                  Price - Range
-                </MenuItem>
-              </Select>
-            </FormControl>
-            <FormControl sx={{ mr: 2 }}>
-              <InputLabel>Bedrooms</InputLabel>
-              <Select label="Price" value="bedrooms">
-                <MenuItem value="bedrooms" selected>
-                  Beedrooms
-                </MenuItem>
-              </Select>
-            </FormControl>
-          </Grid>
-          <Grid item xs="auto">
-            <FormControl aria-describedby={id} onClick={handleClick} disabled>
-              <InputLabel>More</InputLabel>
-              <Select label="Price" value="bedrooms">
-                <MenuItem value="bedrooms" selected>
-                  More
-                </MenuItem>
-              </Select>
-            </FormControl>
-            <Popover
-              id={id}
-              open={open}
-              anchorEl={anchorEl}
-              onClose={handleClose}
-              anchorOrigin={{
-                vertical: "bottom",
-                horizontal: "right",
-              }}
-            >
-              <FilterForm></FilterForm>
-            </Popover>
-          </Grid>
+    <Box
+      sx={{
+        backgroundColor: "#F7F8FA",
+        pl: { xs: "17px", md: "100px" },
+        pr: { xs: "17px", md: "100px" },
+        py: "16px",
+      }}
+    >
+      <Grid container spacing="16px">
+        <Grid item xs>
+          <TextField
+            label="Buscar propiedades"
+            variant="outlined"
+            fullWidth
+            InputProps={{
+              sx: { height: "48px" },
+              startAdornment: (
+                <InputAdornment position="start">
+                  <SearchOutlinedIcon />
+                </InputAdornment>
+              ),
+              endAdornment: (
+                <InputAdornment position="end">
+                  <CloseOutlinedIcon />
+                </InputAdornment>
+              ),
+            }}
+          />
         </Grid>
-      </Container>
+
+        <Grid item xs="auto" sx={{ display: { xs: "none", md: "block" } }}>
+          <FormControl>
+            <Select sx={{ height: "48px" }} value="default">
+              <MenuItem value="default" disabled>
+                Type – Apartment
+              </MenuItem>
+            </Select>
+          </FormControl>
+        </Grid>
+        <Grid item xs="auto" sx={{ display: { xs: "none", md: "block" } }}>
+          <FormControl>
+            <Select sx={{ height: "48px" }} value="default">
+              <MenuItem value="default" disabled>
+                Price Range
+              </MenuItem>
+            </Select>
+          </FormControl>
+        </Grid>
+        <Grid item xs="auto" sx={{ display: { xs: "none", md: "block" } }}>
+          <FormControl>
+            <Select sx={{ height: "48px" }} value="default">
+              <MenuItem value="default" disabled>
+                Bedrooms
+              </MenuItem>
+            </Select>
+          </FormControl>
+        </Grid>
+        <Grid item xs="auto">
+          <FormControl>
+            <Select
+              sx={{ height: "48px" }}
+              value="default"
+              aria-describedby={id}
+              onClick={handleClick}
+              disabled
+            >
+              <MenuItem value="default" disabled>
+                More
+              </MenuItem>
+            </Select>
+          </FormControl>
+
+          <Popover
+            id={id}
+            open={open}
+            anchorEl={anchorEl}
+            onClose={handleClose}
+            anchorOrigin={{
+              vertical: "bottom",
+              horizontal: "right",
+            }}
+          >
+            <FilterForm></FilterForm>
+          </Popover>
+        </Grid>
+      </Grid>
     </Box>
   );
 }

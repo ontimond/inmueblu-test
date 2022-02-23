@@ -22,18 +22,19 @@ export function Property(prop) {
     prop;
 
   return (
-    <Grid container spacing={3} sx={{ height: "334px" }}>
-      <Grid item xs={12} md={3}>
+    <Grid container spacing="32px" sx={{ height: "334px" }}>
+      <Grid minWidth="217px" minHeight="334px" item xs={12} md={3}>
         <Box
           sx={{
             height: "100%",
             minHeight: "334px",
+            minWidth: "217px",
             width: "100%",
             backgroundImage: `url(${image})`,
             backgroundSize: "cover",
             backgroundPosition: "center",
             backgroundRepeat: "no-repeat",
-            borderRadius: { xs: "25px", md: "5px" },
+            borderRadius: { xs: "20px", md: "5px" },
           }}
         />
       </Grid>
@@ -43,57 +44,71 @@ export function Property(prop) {
             width: 1,
             display: "inline-flex",
             justifyContent: "space-between",
+            mb: "16px",
           }}
         >
-          <Typography variant="h4" color={blue[700]} sx={{ mb: 2 }}>
+          <Typography variant="h4" color="primary">
             {price.toLocaleString("en-US", {
               style: "currency",
               currency: "USD",
             })}
           </Typography>
-          <FavoriteBorderIcon color="primary" />
+          <FavoriteBorderIcon color="disabled" sx={{ fontSize: "25px" }} />
         </Box>
         <Chip
-          icon={<LocalOfferOutlinedIcon />}
-          label={status}
-          color="success"
-          sx={{ mb: 3 }}
+          icon={
+            <LocalOfferOutlinedIcon
+              fontSize="small"
+              sx={{ color: "#34A853" }}
+            />
+          }
+          label={
+            <Typography variant="body1" color="#34A853">
+              {status}
+            </Typography>
+          }
+          sx={{
+            mb: "24px",
+            px: "16px",
+            py: "4px",
+            backgroundColor: "rgba(52, 168, 83, 0.1)",
+          }}
         />
-        <Typography variant="h6">{title}</Typography>
-        <Typography variant="body2" color={grey[500]} sx={{ mb: 3 }}>
+        <Typography variant="h6" sx={{ mb: "4px" }}>
+          {title}
+        </Typography>
+        <Typography variant="body1" color="#8F909D" sx={{ mb: "36px" }}>
           {location}
         </Typography>
         <Box
           sx={{
             display: "inline-flex",
             width: 1,
-            mb: 3,
+            mb: "48px",
           }}
-          color={grey[500]}
         >
-          <Box display="inline-flex" sx={{ mr: 5 }}>
-            <BedSharpIcon fontSize="small" sx={{ mr: 1 }}></BedSharpIcon>
-            <Typography variant="body2" fontWeight={300}>
-              {rooms} Cuartos
-            </Typography>
+          <Box display="inline-flex" alignItems="center" sx={{ mr: "50px" }}>
+            <BedSharpIcon
+              color="disabled"
+              sx={{ fontSize: "19px", mr: "10px" }}
+            ></BedSharpIcon>
+            <Typography variant="subtitle1">{rooms} Cuartos</Typography>
           </Box>
-          <Box display="inline-flex" sx={{ mr: 5 }}>
+
+          <Box display="inline-flex" alignItems="center" sx={{ mr: "50px" }}>
             <BathtubOutlinedIcon
-              fontSize="small"
-              sx={{ mr: 1 }}
+              color="disabled"
+              sx={{ fontSize: "19px", mr: "10px" }}
             ></BathtubOutlinedIcon>
-            <Typography variant="body2" fontWeight={300}>
-              {bathrooms} Banos
-            </Typography>
+            <Typography variant="subtitle1"> {bathrooms} Banos</Typography>
           </Box>
-          <Box display="inline-flex" sx={{ mr: 5 }}>
+
+          <Box display="inline-flex" alignItems="center" sx={{ mr: "50px" }}>
             <StraightenOutlinedIcon
-              fontSize="small"
-              sx={{ mr: 1 }}
+              color="disabled"
+              sx={{ fontSize: "19px", mr: "10px" }}
             ></StraightenOutlinedIcon>
-            <Typography variant="body2" fontWeight={300}>
-              {size} mts2
-            </Typography>
+            <Typography variant="subtitle1">{size} mts2</Typography>
           </Box>
         </Box>
         <Button variant="outlined" color="primary">

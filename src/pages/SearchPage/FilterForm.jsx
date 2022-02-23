@@ -16,7 +16,9 @@ import { Box } from "@mui/system";
 
 export function FilterForm() {
   return (
-    <Box sx={{ p: 4, width: "400px" }}>
+    <Box
+      sx={{ p: 4, width: "400px", display: "flex", flexDirection: "column" }}
+    >
       <FormControl sx={{ width: 1, mb: 2 }}>
         <InputLabel>Bathrooms</InputLabel>
         <Select label="Type" value="-">
@@ -103,7 +105,12 @@ export function FilterForm() {
           display: "inline-flex",
         }}
       >
-        <Button variant="outlined" color="primary" fullWidth sx={{ mr: 2 }}>
+        <Button
+          variant="outlined"
+          color="primary"
+          fullWidth
+          sx={{ mr: 2, height: "56px" }}
+        >
           Reestablecer filtros
         </Button>
         <Button variant="contained" color="primary" fullWidth>
