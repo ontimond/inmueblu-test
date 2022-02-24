@@ -22,7 +22,7 @@ export function Property(prop) {
     prop;
 
   return (
-    <Grid container spacing="32px" sx={{ height: "334px" }}>
+    <Grid container gap="23px" sx={{ height: "334px" }}>
       <Grid minWidth="217px" minHeight="334px" item xs={12} md={3}>
         <Box
           sx={{

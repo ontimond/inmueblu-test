@@ -1,21 +1,19 @@
 import {
-  Container,
   TextField,
   FormControl,
   Select,
   MenuItem,
-  InputLabel,
   Grid,
-  Button,
   Popover,
-  Typography,
   Box,
   InputAdornment,
+  IconButton,
 } from "@mui/material";
 import { useState } from "react";
 import { FilterForm } from "./FilterForm";
 import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
 import CloseOutlinedIcon from "@mui/icons-material/CloseOutlined";
+import FilterAltOutlinedIcon from "@mui/icons-material/FilterAltOutlined";
 
 export function SearchBar() {
   const [anchorEl, setAnchorEl] = useState(null);
@@ -39,7 +37,7 @@ export function SearchBar() {
         py: "16px",
       }}
     >
-      <Grid container spacing="16px">
+      <Grid container spacing="16px" alignItems="center">
         <Grid item xs>
           <TextField
             label="Buscar propiedades"
@@ -88,7 +86,7 @@ export function SearchBar() {
             </Select>
           </FormControl>
         </Grid>
-        <Grid item xs="auto">
+        <Grid item xs="auto" sx={{ display: { xs: "none", md: "block" } }}>
           <FormControl>
             <Select
               sx={{ height: "48px" }}
@@ -115,6 +113,11 @@ export function SearchBar() {
           >
             <FilterForm></FilterForm>
           </Popover>
+        </Grid>
+        <Grid item xs="auto" sx={{ display: { xs: "block", md: "none" } }}>
+          <IconButton onClick={handleClick}>
+            <FilterAltOutlinedIcon />
+          </IconButton>
         </Grid>
       </Grid>
     </Box>
