@@ -1,7 +1,10 @@
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
+import IconButton from "@mui/material/IconButton";
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
+import MenuIcon from "@mui/icons-material/Menu";
+import SearchIcon from '@mui/icons-material/Search';
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
@@ -33,33 +36,47 @@ export function Header() {
         sx={{
           pl: { xs: "17px", md: "100px" },
           pr: { xs: "17px", md: "100px" },
-          py: "16px ",
+          py: "16px",
+			minHeight: { xs: "unset", md: "64px" },
+			display: "inline-flex",
+			justifyContent: "center",
         }}
         disableGutters
       >
-        <Box display="inline-flex" alignItems="baseline" sx={{ mr: "64px" }}>
+	  <IconButton sx={{display:{ xs: 'block', md: 'none'}}}>
+	  		<MenuIcon  />
+</IconButton>
+        <Box display="inline-flex" alignItems="baseline" justifyContent="center" sx={{ mr: { xs: 0, md:"64px"}, flexGrow: {xs: 1, md: 'unset' } }} >
           <Box sx={{ mr: "10px" }} component="img" src="logo.svg"></Box>
           <Typography color="primary" fontSize={22} fontWeight={700}>
             Inmueblu
           </Typography>
         </Box>
-        <Typography variant="subtitle2" sx={{ flexGrow: 1 }}>
+        <Typography display={{ xs: 'none', md: 'block'}} variant="subtitle2" sx={{ flexGrow: 1 }}>
           Buscar propiedades
         </Typography>
+	  <Box display={{ xs: 'none', md: 'inline-flex'}}>
+
         <FavoriteBorderIcon
           fontSize="14px"
           color="disabled"
           sx={{ mr: "10px" }}
         />
-        <Typography variant="subtitle2" sx={{ mr: "24px" }}>
+        <Typography display={{ xs: 'none', md: 'block'}} variant="subtitle2" sx={{ mr: "24px" }}>
           Favoritos
         </Typography>
-        <Typography variant="subtitle2" sx={{ mr: "24px" }}>
+	  </Box>
+        <Typography display={{ xs: 'none', md: 'block'}} variant="subtitle2" sx={{ mr: "24px" }}>
           Iniciar sesión
         </Typography>
+	  <Box display={{ xs: 'none', md: 'block'}}>
         <Button color="primary" variant="contained">
           Publicar propiedad
         </Button>
+	  </Box>
+	  <IconButton sx={{display:{ xs: 'block', md: 'none'}}}>
+	  		<SearchIcon  />
+</IconButton>
       </Toolbar>
     </AppBar>
   );
